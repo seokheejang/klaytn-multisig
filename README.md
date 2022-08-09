@@ -14,9 +14,15 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 Try running some of the following tasks:
 
 ```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+yarn hardhat help
+yarn hardhat test
+GAS_REPORT=true yarn hardhat test
+yarn hardhat node
+yarn hardhat run scripts/deploy.ts
+```
+
+## Hardhat Test
+
+```shell
+yarn hardhat test ./test/Lock.ts
 ```
