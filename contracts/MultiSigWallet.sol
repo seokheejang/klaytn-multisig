@@ -13,7 +13,7 @@ contract MultiSigWallet {
     event Submission(uint indexed transactionId);
     event Execution(uint indexed transactionId);
     event ExecutionFailure(uint indexed transactionId);
-    event Deposit(address indexed sender, uint value);
+    event Deposit(address indexed sender, uint value, uint balance);
     event OwnerAddition(address indexed owner);
     event OwnerRemoval(address indexed owner);
     event RequirementChange(uint required, address indexed ca);
@@ -44,7 +44,7 @@ contract MultiSigWallet {
      *  Modifiers
      */
     modifier onlyWallet() {
-        require(msg.sender != address(this)); // 테스트 이후 '=='로 변경 
+        require(msg.sender == address(this));
         _;
     }
 
@@ -92,9 +92,9 @@ contract MultiSigWallet {
     }
 
     /// @dev Fallback function allows to deposit ether.
-    receive() external payable {
+    fallback() external payable {
         if (msg.value > 0)
-            emit Deposit(msg.sender, msg.value);
+            emit Deposit(msg.sender, msg.value, address(this).balance);
     }
 
     constructor(address[] memory _owners, uint _required) 
