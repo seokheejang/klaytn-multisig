@@ -18,6 +18,7 @@ contract MultiSigWallet {
     event OwnerRemoval(address indexed owner);
     event RequirementChange(uint required, address indexed ca);
 
+
     /*
      *  Constants
      */

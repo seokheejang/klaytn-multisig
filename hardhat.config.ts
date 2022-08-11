@@ -1,10 +1,11 @@
 import "dotenv/config";
+import "@nomicfoundation/hardhat-chai-matchers";
 import "@typechain/hardhat";
 import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-waffle";
 import "hardhat-deploy";
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "./deploy/deploy_multisig_wallet";
 
 const httpHeaders = {
   Authorization:
