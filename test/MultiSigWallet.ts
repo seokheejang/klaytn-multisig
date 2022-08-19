@@ -52,7 +52,7 @@ describe("MultiSigWallet", async () => {
     it("Should operation executeTransaction exceeded confrim(required) threshold", async () => {
       const tx = await msw.submitTransaction(receiver, one_gwei, "0x01");
       const txId = await getIndexFromTxEventLog(tx);
-
+      // 다른 owner의 confrim이 오기전에 execute contract 실행
       await msw.executeTransaction(txId);
 
       expect(await msw.isConfirmed(txId)).to.eq(false);
@@ -67,6 +67,7 @@ describe("MultiSigWallet", async () => {
     });
 
     it(`signers[0] run submitTransaction, Wallet Contract value: ${one_eth}`, async () => {
+      // 첫 번째 owner의 submit multisig contract 실행
       const tx = await msw.submitTransaction(receiver, one_gwei, "0x01");
       const txId = await getIndexFromTxEventLog(tx);
 
@@ -78,11 +79,12 @@ describe("MultiSigWallet", async () => {
     it(`signers[1] run confirmTransaction, Wallet Contract value: ${
       BigInt(one_eth) - BigInt(one_gwei)
     }`, async () => {
+      // 두번째 owner 계정으로 connect해서 confirm multisig contract 실행
       const tx = await msw.connect(signers[1]).confirmTransaction(0);
       const txId = await getIndexFromTxEventLog(tx);
 
       expect(await msw.getConfirmationCount(txId)).to.eq(2);
-
+      // Contract Wallet의 빠져나간 Ehter 잔금 확인
       expect(await ethers.provider.getBalance(msw.address)).to.eq(
         BigInt(one_eth) - BigInt(one_gwei)
       );

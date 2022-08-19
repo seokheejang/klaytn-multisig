@@ -10,11 +10,16 @@
     "test": "yarn hardhat test",
     "deploy:baobab:msw": "hardhat deploy_multisig_wallet --network baobab --verbose",
     "deploy:cypress:msw": "hardhat deploy_multisig_wallet --network cypress --verbose",
-    "deploy:scn": "hardhat deploy --network scn --verbose"
+    "deploy:scn:msw": "hardhat deploy_multisig_wallet --network scn --verbose",
+    "deploy:baobab:sc": "hardhat deploy_safe_contracts --network baobab --verbose",
+    "deploy:cypress:sc": "hardhat deploy_safe_contracts --network cypress --verbose",
+    "deploy:scn:sc": "hardhat deploy_safe_contracts --network scn --verbose",
+    "remixd": "remixd -s ./contracts/SafeContract --remix-ide https://remix.ethereum.org"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
+    "@gnosis.pm/mock-contract": "^4.0.0",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.2",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^1.0.1",
@@ -31,6 +36,7 @@
     "hardhat": "^2.10.1",
     "hardhat-deploy": "^0.11.12",
     "hardhat-gas-reporter": "^1.0.8",
+    "remixd": "^0.2.4",
     "solidity-coverage": "^0.7.21",
     "ts-node": ">=8.0.0",
     "typechain": "^8.1.0",
