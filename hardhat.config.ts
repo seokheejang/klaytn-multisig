@@ -7,6 +7,8 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "./deploy/deploy_multisig_wallet";
 import "./deploy/deploy_safe_contract";
+import "./deploy/deploy_erc20_token";
+import "./deploy/deploy_erc721_token";
 
 const httpHeaders = {
   Authorization:

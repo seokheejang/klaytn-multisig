@@ -1,4 +1,3 @@
-//import Caver from "caver-js";
 import { HardhatRuntimeEnvironment, HttpNetworkConfig } from "hardhat/types";
 import { task } from "hardhat/config";
 
