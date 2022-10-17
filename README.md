@@ -37,3 +37,9 @@ yarn deploy:scn:{Contarct Name}
 yarn remixd
 # remixd -s ./contracts/SafeContract --remix-ide https://remix.ethereum.org
 ```
+
+## Klaytn ERC-20 Token Deploy
+
+```shell
+npx hardhat deploy_erc20_token --network baobab --verbose
+```
